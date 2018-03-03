@@ -1,6 +1,6 @@
 INSERTION FUNCTIONS
 
-  Function name: addShelter()
+  Function name: addShelter(name, zipcode, address, capacity, services, active)
   Parameters: string name, int zipcode, string address, int capacity, string services, bool active
   Returns: confirmation of insertion with object id
 
@@ -8,7 +8,7 @@ INSERTION FUNCTIONS
 
 
 
-  Function name: addProvisions()
+  Function name: addProvisions(name, address, zipcode, active)
   Parameters: string name, string address, int zipcode, bool active
   Returns: confirmation of insertion with object id
 
@@ -16,7 +16,7 @@ INSERTION FUNCTIONS
 
 
 
-  Function: addUserInfo()
+  Function: addUserInfo(name, zipcode, phoneNum)
   Parameters: string name, int zipcode, string phonenumber OR int phonenumber
   Returns: confirmation of insertion with object id
   Extra Info: phonenumber will be input as a string but will be changed into int
@@ -40,7 +40,7 @@ INSERTION FUNCTIONS
 
 RETRIEVAL FUNCTIONS
 
-Function: getShelters()
+Function: getShelters(zipcode)
 Parameter: int zipcode
 Returns: a list of dictionary elements with all shelters matching zipcode
 
@@ -58,7 +58,7 @@ Access Example: listName['Name']
 
 
 
-Function: getProvisions()
+Function: getProvisions(zipcode)
 Parameter: int zipcode
 Return: a list of dictionary elements with all locations with provisions matching zipcode
 
