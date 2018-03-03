@@ -34,20 +34,24 @@ def addProvisions(name, address, zipcode, active):
 	result = provisions.insert_one(provision_data)
 	return ('Posted: {0}'.format(result.inserted_id))
 
-def adduserInfo(name, zipcode, phoneNum):
+def addUserInfo(name, zipcode, phoneNum):
 	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
 	db = client.DisasterInfo
 	userInfo = db.userInfo
 	
+	if isinstance(phoneNum, str):
+		phoneNum = phoneNum.replace('+', '').replace('-', "").replace(' ', '').replace('(', '').replace(')', '')
+		phoneNum = int(phoneNum)
+	
 	user_data = { # Create data packet
 		'Name': name,
 		'ZIP': zipcode,
-      	'Phone Number': phoneNumb
+      	'Phone Number': phoneNum
 	}
 	result = userInfo.insert_one(user_data)
 	return ('Post ID: {0}'.format(result.inserted_id))
 
-def addimportantItems(disaster, items):
+def addImportantItems(disaster, items):
 	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
 	db = client.DisasterInfo
 	importantItems = db.importantItems
@@ -82,5 +86,13 @@ def getUserInfo(phoneNum):
 	db = client.DisasterInfo
 	userInfo = db.userInfo # Collection name inside database
 
+	if isinstance(phoneNum, str):
+		phoneNum = phoneNum.replace('+', '').replace('-', "").replace(' ', '').replace('(', '').replace(')', '')
+		phoneNum = int(phoneNum)
+	
 	userInfo_post = userInfo.find_one({'Phone Number' : phoneNum})
 	return userInfo_post
+
+	
+addUserInfo("Mickey", 94539, "(408)-966-8994")
+print(getUserInfo("408-966-8994"))

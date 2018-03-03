@@ -16,16 +16,21 @@ INSERTION FUNCTIONS
 
 
 
-  Function: adduserInfo()
-  Parameters: string name, int zipcode, string phonenumber
+  Function: addUserInfo()
+  Parameters: string name, int zipcode, string phonenumber OR int phonenumber
   Returns: confirmation of insertion with object id
   Extra Info: phonenumber will be input as a string but will be changed into int
 
   Example: adduserInfo("User Name", 95053, "(123) 456-7890")
+  Any string input for phonenum will work:
+	+1 (800)-234-4321
+	(800)23414321
+	800-234-4321
+	800 234 4321
+	8002344321
 
 
-
-  Function: addimportantItems()
+  Function: addImportantItems()
   Parameters: string disaster, string items
   Returns: confirmation of insertion with object id
 
