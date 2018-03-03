@@ -1,0 +1,79 @@
+INSERTION FUNCTIONS
+
+  Function name: addShelter()
+  Parameters: string name, int zipcode, string address, int capacity, string services, bool active
+  Returns: confirmation of insertion with object id
+
+  Example: addShelter("Shelter Name", 95110, "Address", 50, "Extra Services", True)
+
+
+
+  Function name: addProvisions()
+  Parameters: string name, string address, int zipcode, bool active
+  Returns: confirmation of insertion with object id
+
+  Example: addProvisions("Location Name", "Address", 95053, False)
+
+
+
+  Function: adduserInfo()
+  Parameters: string name, int zipcode, string phonenumber
+  Returns: confirmation of insertion with object id
+  Extra Info: phonenumber will be input as a string but will be changed into int
+
+  Example: adduserInfo("User Name", 95053, "(123) 456-7890")
+
+
+
+  Function: addimportantItems()
+  Parameters: string disaster, string items
+  Returns: confirmation of insertion with object id
+
+  Example: addimportantItems("Hurricane", "insurance information, bag with extra provisions")
+
+
+
+RETRIEVAL FUNCTIONS
+
+Function: getShelters()
+Parameter: int zipcode
+Returns: a list of dictionary elements with all shelters matching zipcode
+
+Example: getShelters(95110)
+
+Shelter Structure:
+	'Name': name,
+  'ZIP': zipcode,
+	'Address': address,
+	'Capacity': capacity,
+  'Services': services,
+  'Active': active
+
+Access Example: listName['Name']
+
+
+
+Function: getProvisions()
+Parameter: int zipcode
+Return: a list of dictionary elements with all locations with provisions matching zipcode
+
+Example: getProvisions(95053)
+
+Provision Structure:
+	'Name': name,
+	'ZIP': zipcode,
+	'Address': address,
+	'Active': active
+  
+  
+  
+Function: getUserInfo(phoneNum):
+Parameter: string phoneNum
+Return: a dict variable of the one user matching the phoneNum
+
+Example getUserInfo("(123) 456-7890")
+
+UserInfo Structure:
+	'Name': name,
+	'ZIP': zipcode,
+  'Phone Number': phoneNumb
