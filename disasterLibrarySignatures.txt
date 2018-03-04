@@ -8,8 +8,8 @@ INSERTION FUNCTIONS
 
 
 
-  Function name: addProvisions(name, address, zipcode, active)
-  Parameters: string name, string address, int zipcode, bool active
+  Function name: addProvisions(name, zipcode, address, active)
+  Parameters: string name, int zipcode, string address, bool active
   Returns: confirmation of insertion with object id
 
   Example: addProvisions("Location Name", "Address", 95053, False)
@@ -54,7 +54,7 @@ Shelter Structure:
   'Services': services,
   'Active': active
 
-Access Example: listName['Name']
+Access Example: dict['Name']
 
 
 

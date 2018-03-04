@@ -19,8 +19,9 @@ def addShelter(name, zipcode, address, capacity, services, active):
 	}
 	result = shelters.insert_one(shelter_data) # Pushing data to database
 	return ('Posted: {0}'.format(result.inserted_id))
-	
-def addProvisions(name, address, zipcode, active):
+
+# name zip addy
+def addProvisions(name, zipcode, address, active):
 	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
 	db = client.DisasterInfo
 	provisions = db.provisions # Collection name inside database
@@ -64,13 +65,13 @@ def addImportantItems(disaster, items):
 	return ('Post ID: {0}'.format(result.inserted_id))
 	
 # RETRIEVAL
-	
+
 def getShelters(zipcode):
 	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
 	db = client.DisasterInfo
 	shelters = db.shelters # Collection name inside database
 	
-	shelter_posts = shelters.find({'ZIP' : zipcode})
+	shelter_posts = shelters.find({'ZIP' : zipcode, 'Active' : True})
 	return shelter_posts
 
 def getProvisions(zipcode):
@@ -78,7 +79,7 @@ def getProvisions(zipcode):
 	db = client.DisasterInfo
 	provisions = db.provisions # Collection name inside database
 
-	provisions_posts = provisions.find({'ZIP' : zipcode})
+	provisions_posts = provisions.find({'ZIP' : zipcode, 'Active' : True})
 	return provisions_posts
 
 def getUserInfo(phoneNum):
@@ -92,7 +93,3 @@ def getUserInfo(phoneNum):
 	
 	userInfo_post = userInfo.find_one({'Phone Number' : phoneNum})
 	return userInfo_post
-
-	
-addUserInfo("Mickey", 94539, "(408)-966-8994")
-print(getUserInfo("408-966-8994"))
