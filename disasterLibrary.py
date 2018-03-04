@@ -15,6 +15,7 @@ def addShelter(name, zipcode, address, capacity, services, active):
 		'Address': address,
 		'Capacity': capacity,
       	'Services': services,
+		'Visitors' : 0,
       	'Active': active
 	}
 	result = shelters.insert_one(shelter_data) # Pushing data to database
@@ -30,6 +31,7 @@ def addProvisions(name, zipcode, address, active):
 		'Name': name,
 		'ZIP': zipcode,
 		'Address': address,
+		'Visitors' : 0,
 		'Active': active
 	}
 	result = provisions.insert_one(provision_data)
@@ -93,3 +95,41 @@ def getUserInfo(phoneNum):
 	
 	userInfo_post = userInfo.find_one({'Phone Number' : phoneNum})
 	return userInfo_post
+
+# UPDATING
+
+def incrShelterVisitors(name):
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	db = client.DisasterInfo
+	shelters = db.shelters
+	shelters.update_one({'Name' : name}, {'$inc': {'Visitors' : 1}}, upsert=False)
+
+def clearShelterVisitors(name):
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	db = client.DisasterInfo
+	shelters = db.shelters
+	shelters.update_one({'Name' : name}, {'$set': {'Visitors' : 0}}, upsert=False)
+	
+def renameShelter(name, newName):
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	db = client.DisasterInfo
+	shelters = db.shelters
+	shelters.update_one({'Name' : name}, {'$set': {'Name': newName}}, upsert=False)
+	
+def renameProvisions(name, newName):
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	db = client.DisasterInfo
+	provisions = db.provisions
+	provisions.update_one({'Name' : name}, {'$set': {'Name': newName}}, upsert=False)
+
+def updateShelterActive(name, active):
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	db = client.DisasterInfo
+	shelters = db.shelters
+	shelters.update_one({'Name' : name}, {'$set': {'Active': active}}, upsert=False)
+    
+def updateProvisionsActive(name, active):
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	db = client.DisasterInfo
+	provisions = db.provisions
+	provisions.update_one({'Name' : name}, {'$set': {'Active': active}}, upsert=False)

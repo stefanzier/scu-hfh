@@ -1,28 +1,28 @@
 INSERTION FUNCTIONS
 
-  Function name: addShelter(name, zipcode, address, capacity, services, active)
-  Parameters: string name, int zipcode, string address, int capacity, string services, bool active
-  Returns: confirmation of insertion with object id
+Function name: addShelter(name, zipcode, address, capacity, services, active)
+Parameters: string name, int zipcode, string address, int capacity, string services, bool active
+Returns: confirmation of insertion with object id
 
-  Example: addShelter("Shelter Name", 95110, "Address", 50, "Extra Services", True)
-
-
-
-  Function name: addProvisions(name, zipcode, address, active)
-  Parameters: string name, int zipcode, string address, bool active
-  Returns: confirmation of insertion with object id
-
-  Example: addProvisions("Location Name", "Address", 95053, False)
+Example: addShelter("Shelter Name", 95110, "Address", 50, "Extra Services", True)
 
 
 
-  Function: addUserInfo(name, zipcode, phoneNum)
-  Parameters: string name, int zipcode, string phonenumber OR int phonenumber
-  Returns: confirmation of insertion with object id
-  Extra Info: phonenumber will be input as a string but will be changed into int
+Function name: addProvisions(name, zipcode, address, active)
+Parameters: string name, int zipcode, string address, bool active
+Returns: confirmation of insertion with object id
 
-  Example: adduserInfo("User Name", 95053, "(123) 456-7890")
-  Any string input for phonenum will work:
+Example: addProvisions("Location Name", "Address", 95053, False)
+
+
+
+Function: addUserInfo(name, zipcode, phoneNum)
+Parameters: string name, int zipcode, string phonenumber OR int phonenumber
+Returns: confirmation of insertion with object id
+Extra Info: phonenumber will be input as a string but will be changed into int
+
+Example: adduserInfo("User Name", 95053, "(123) 456-7890")
+Any string input for phonenum will work:
 	+1 (800)-234-4321
 	(800)23414321
 	800-234-4321
@@ -30,11 +30,11 @@ INSERTION FUNCTIONS
 	8002344321
 
 
-  Function: addImportantItems()
-  Parameters: string disaster, string items
-  Returns: confirmation of insertion with object id
+Function: addImportantItems()
+Parameters: string disaster, string items
+Returns: confirmation of insertion with object id
 
-  Example: addimportantItems("Hurricane", "insurance information, bag with extra provisions")
+Example: addimportantItems("Hurricane", "insurance information, bag with extra provisions")
 
 
 
@@ -48,11 +48,12 @@ Example: getShelters(95110)
 
 Shelter Structure:
 	'Name': name,
-  'ZIP': zipcode,
+	'ZIP': zipcode,
 	'Address': address,
 	'Capacity': capacity,
-  'Services': services,
-  'Active': active
+	'Services': services,
+	'Visitors' : 0,
+	'Active': active
 
 Access Example: dict['Name']
 
@@ -68,11 +69,12 @@ Provision Structure:
 	'Name': name,
 	'ZIP': zipcode,
 	'Address': address,
+	'Visitors' : 0,
 	'Active': active
   
   
   
-Function: getUserInfo(phoneNum):
+Function: getUserInfo(phoneNum)
 Parameter: string phoneNum
 Return: a dict variable of the one user matching the phoneNum
 
@@ -81,4 +83,45 @@ Example getUserInfo("(123) 456-7890")
 UserInfo Structure:
 	'Name': name,
 	'ZIP': zipcode,
-  'Phone Number': phoneNumb
+	'Phone Number': phoneNum
+	
+
+# UPDATE FUNCTIONS
+
+Function: incrShelterVisitors(name)
+Parameter: string shelterName
+Return: none (visitors++ of given shelter)
+
+
+
+Function: clearShelterVisitors(name)
+Parameter: string shelterName
+Return: none (sets visitors back to 0)
+
+
+
+Function: renameShelter(name, newName)
+Parameter: string shelterName, string newName
+Return: none (changes shelterName)
+
+
+
+Function: renameProvisions(name, newName)
+Parameter: string provisionsName, string newName
+Return: none (changes provisions name)
+
+
+
+Function: updateShelterActive(name, active)
+Parameter: string name, bool active
+Return: none (updates the active variable for the shelter based on user input)
+
+Example: updateShelterActive("Shelter Name", True)
+
+
+
+Function: updateProvisionsActive(name, active)
+Parameter: string name, bool active
+Return: none (updates the active variable for the provision location based on user input)
+
+Example: updateProvisionActive("Location Name", False)
