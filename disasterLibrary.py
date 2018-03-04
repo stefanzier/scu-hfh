@@ -5,7 +5,7 @@ import ssl
 
 # This is the library for inserting new info and accessing info based on searches
 # Check for the function signatures for clear and simple ways to use the functions of this library
-dbURL = 'mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin&ssl_cert_reqs=CERT_NONE'
+dbURL = 'mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin' #&ssl_cert_reqs=CERT_NONE'
 
 # Insertion
 def addShelter(name, zipcode, address, capacity, services, active):
