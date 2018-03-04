@@ -7,7 +7,7 @@
     <style type="text/css">
         #mynetwork {
             width: 1200px;
-            height: 800px;
+            height: 600px;
             border: 1px solid lightgray;
         }
     </style>
@@ -36,8 +36,6 @@
             var entries = allTextLines[i].split(',');
             finalData.push(entries);
         }
-        
-        console.log(finalData);
 
         // create an array with nodes
 
@@ -72,8 +70,13 @@
             layout:{
                 randomSeed: 20,
                 hierarchical: {
-                  enabled: true
+                  enabled: true,
+                  levelSeparation: 30,
+                  direction: 'UD'
                 }
+            },
+            edges: {
+                arrows: 'to'
             }
         };
 
