@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 from itertools import chain
 import urllib.request, json
+import ssl
 
 # This is the library for inserting new info and accessing info based on searches
 # Check for the function signatures for clear and simple ways to use the functions of this library
