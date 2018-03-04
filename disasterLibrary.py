@@ -80,7 +80,8 @@ def getShelters(zipcode, nearby):
 	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
 	db = client.DisasterInfo
 	shelters = db.shelters # Collection name inside database
-	shelter_posts = shelters.find({'ZIP' : zipcode, 'Active' : True})
+	#shelter_posts = shelters.find({'ZIP' : zipcode, 'Active' : True})
+	shelter_posts = shelters.find({'ZIP' : 00000, 'Active' : True})
 	
 	if nearby:
 		zipcodes = nearbyZipcodes(zipcode)
