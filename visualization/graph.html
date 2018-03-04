@@ -1,0 +1,87 @@
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        #mynetwork {
+            width: 1200px;
+            height: 800px;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+<div id="mynetwork"></div>
+
+<script>
+
+    $(document).ready(function() {
+        $.ajax({
+            type: "GET",
+            url: "https://raw.githubusercontent.com/stefanzier/scu-hfh/master/csv1.csv",
+            dataType: "text",
+            success: function(data) {processData(data);}
+         });
+    });
+
+    function processData(allText) {
+        var record_num = 5;  // or however many elements there are in each row
+        var allTextLines = allText.split(/\r\n|\n/);
+
+        var finalData = [];
+
+        for(var i = 0; i < allTextLines.length; i++) {
+            var entries = allTextLines[i].split(',');
+            finalData.push(entries);
+        }
+        
+        console.log(finalData);
+
+        // create an array with nodes
+
+        var node_data = [];
+        var edge_data = [];
+
+
+        //finalData[i][1]
+
+        for(var i = 0; i <= 36; i++) {
+            node_data.push({id: finalData[i][0], label: "node " + finalData[i][0]})
+            var edge_links = finalData[i][5].split('|')
+            for(var j = 0; j < edge_links.length; j++) {
+                edge_data.push({from: finalData[i][0], to: edge_links[j]})
+            }
+        }
+
+        var nodes = new vis.DataSet(node_data);
+
+        // create an array with edges
+        var edges = new vis.DataSet(edge_data);
+
+        // create a network
+        var container = document.getElementById('mynetwork');
+
+        // provide the data in the vis format
+        var data = {
+            nodes: nodes,
+            edges: edges
+        };
+        var options = {
+            layout:{
+                randomSeed: 20,
+                hierarchical: {
+                  enabled: true
+                }
+            }
+        };
+
+        // initialize your network!
+        var network = new vis.Network(container, data, options);
+    }
+
+    
+</script>
+</body>
+</html>
