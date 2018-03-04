@@ -8,7 +8,7 @@ import ssl
 
 # Insertion
 def addShelter(name, zipcode, address, capacity, services, active):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True, ssl_cert_reqs=ssl.CERT_NONE)
 	db = client.DisasterInfo
 	shelters = db.shelters # Collection name inside database
 	
@@ -26,7 +26,7 @@ def addShelter(name, zipcode, address, capacity, services, active):
 
 # name zip addy
 def addProvisions(name, zipcode, address, active):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True, ssl_cert_reqs=ssl.CERT_NONE)
 	db = client.DisasterInfo
 	provisions = db.provisions # Collection name inside database
 
@@ -41,7 +41,7 @@ def addProvisions(name, zipcode, address, active):
 	return ('Posted: {0}'.format(result.inserted_id))
 
 def addUserInfo(name, zipcode, phoneNum):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True, ssl_cert_reqs=ssl.CERT_NONE)
 	db = client.DisasterInfo
 	userInfo = db.userInfo
 	
@@ -62,7 +62,7 @@ def addUserInfo(name, zipcode, phoneNum):
 	return ('Post ID: {0}'.format(result.inserted_id))
 
 def addImportantItems(disaster, items):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True, ssl_cert_reqs=ssl.CERT_NONE)
 	db = client.DisasterInfo
 	importantItems = db.importantItems
 
