@@ -1,22 +1,20 @@
 INSERTION FUNCTIONS
 
-Function name: addShelter(name, zipcode, address, capacity, services, active)
+Name: addShelter(name, zipcode, address, capacity, services, active)
 Parameters: string name, int zipcode, string address, int capacity, string services, bool active
 Returns: confirmation of insertion with object id
 
 Example: addShelter("Shelter Name", 95110, "Address", 50, "Extra Services", True)
 
 
-
-Function name: addProvisions(name, zipcode, address, active)
+Name: addProvisions(name, zipcode, address, active)
 Parameters: string name, int zipcode, string address, bool active
 Returns: confirmation of insertion with object id
 
 Example: addProvisions("Location Name", "Address", 95053, False)
 
 
-
-Function: addUserInfo(name, zipcode, phoneNum)
+Name: addUserInfo(name, zipcode, phoneNum)
 Parameters: string name, int zipcode, string phonenumber OR int phonenumber
 Returns: confirmation of insertion with object id
 Extra Info: phonenumber will be input as a string but will be changed into int
@@ -30,21 +28,24 @@ Any string input for phonenum will work:
 	8002344321
 
 
-Function: addImportantItems()
+Name: addImportantItems()
 Parameters: string disaster, string items
 Returns: confirmation of insertion with object id
 
 Example: addimportantItems("Hurricane", "insurance information, bag with extra provisions")
 
 
-
 RETRIEVAL FUNCTIONS
 
-Function: getShelters(zipcode)
-Parameter: int zipcode
-Returns: a list of dictionary elements with all shelters matching zipcode
+Name: nearbyZipcodes(zipcode)
+Parameter: int/string zipcode
+Returns: int list of zipcodes within 5 miles radius
 
-Example: getShelters(95110)
+Name: getShelters(zipcode, nearby)
+Parameter: int zipcode, bool nearby
+Returns: a list of dictionary elements with all shelters matching zipcode, if nearby is True then include nearby zipcodes
+
+Example: getShelters(95110, True)
 
 Shelter Structure:
 	'Name': name,
@@ -58,12 +59,11 @@ Shelter Structure:
 Access Example: dict['Name']
 
 
+Name: getProvisions(zipcode, nearby)
+Parameter: int zipcode, bool nearby
+Return: a list of dictionary elements with all locations with provisions matching zipcode, if nearby is True then include nearby zipcodes
 
-Function: getProvisions(zipcode)
-Parameter: int zipcode
-Return: a list of dictionary elements with all locations with provisions matching zipcode
-
-Example: getProvisions(95053)
+Example: getProvisions(95053, False)
 
 Provision Structure:
 	'Name': name,
@@ -73,8 +73,7 @@ Provision Structure:
 	'Active': active
   
   
-  
-Function: getUserInfo(phoneNum)
+Name: getUserInfo(phoneNum)
 Parameter: string phoneNum
 Return: a dict variable of the one user matching the phoneNum
 
@@ -88,39 +87,34 @@ UserInfo Structure:
 
 # UPDATE FUNCTIONS
 
-Function: incrShelterVisitors(name)
+Name: incrShelterVisitors(name)
 Parameter: string shelterName
 Return: none (visitors++ of given shelter)
 
 
-
-Function: clearShelterVisitors(name)
+Name: clearShelterVisitors(name)
 Parameter: string shelterName
 Return: none (sets visitors back to 0)
 
 
-
-Function: renameShelter(name, newName)
+Name: renameShelter(name, newName)
 Parameter: string shelterName, string newName
 Return: none (changes shelterName)
 
 
-
-Function: renameProvisions(name, newName)
+Name: renameProvisions(name, newName)
 Parameter: string provisionsName, string newName
 Return: none (changes provisions name)
 
 
-
-Function: updateShelterActive(name, active)
+Name: updateShelterActive(name, active)
 Parameter: string name, bool active
 Return: none (updates the active variable for the shelter based on user input)
 
 Example: updateShelterActive("Shelter Name", True)
 
 
-
-Function: updateProvisionsActive(name, active)
+Name: updateProvisionsActive(name, active)
 Parameter: string name, bool active
 Return: none (updates the active variable for the provision location based on user input)
 
