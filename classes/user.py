@@ -16,3 +16,6 @@ class User(object):
 
     def process(self, node):
         return self.values[node].action()
+
+    def update_zip(self, new_zip):
+        self.zipCode = new_zip
