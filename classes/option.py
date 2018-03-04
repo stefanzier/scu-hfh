@@ -18,6 +18,26 @@ class Option(object):
     def process_response(self, response):
         print("Process was called")
 
+    def get_safe_cities_in_zip(self, zip_code):
+        # TODO: API call to detect safe cities. For now sample data...
+        cities = "Santa Clara, CA (0 miles), "
+        cities += "Los Gatos, CA (10 miles), "
+        cities += "San Mateo, CA (27 miles), "
 
-    def ask_question(self):
+        return cities
+
+    def text_with_user_data(self, user):
+        if self.add_info_flag == 3:
+            # Insert user zip into option text
+            return self.text.replace("[]", str(user.zipCode))
+        elif self.add_info_flag == 2:
+            # Insert safe cities
+            safe_cities = self.get_safe_cities_in_zip(user.zipCode)
+            return self.text.replace("[]", safe_cities)
+
+    def ask_question(self, user):
+        # if our text contains [] then we know we need to insert user data
+        if "[]" in self.text:
+            return self.text_with_user_data(user)
+
         return "  {}".format(self.text)
