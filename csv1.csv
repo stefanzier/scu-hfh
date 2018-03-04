@@ -1,0 +1,37 @@
+0,This text is from TextToSaveYourLife. A hurricane is coming your way in the next 36 hours. Our system says you currently live in zipcode [] Text (1) if you still live here (2) to update your zipcode,0,1,,16|18
+1,Now Text (1) Prepare (2) Get Help (9) To Go Back,0,0,,2|3|24
+2,"""1:prepare""",1,0,,4
+3,"""2:get help""",1,0,,20
+4,To Prepare: text for (1) Shelters (2) Evacuation Plans (3) Items you need (9) To Go Back,0,0,,5|6|7|31
+5,"""1:shelter""",1,0,,8
+6,"""2:evac plans""",1,0,,13
+7,"""3:items""",1,0,,15
+8,Do you have a car to help evacuate? Text (1) if yes. (2) if no. Text (9) to go back.,0,0,,9|10|32
+9,"""yes""",1,0,,11
+10,"""no",1,0,,12
+11,You should evacuate the city if possible. Here are the safe nearby cities: [] . Text (1) to learn about evacuation routes or Text (9) to go back to the start,0,1,,6|24
+12,Here are the safe nearby shelters [] . Text (1) if you plan to go to one of the shelters (2) to learn about evacuation routes or Text (9) to go back to the start,0,1,,25|6|24
+13,These roads are recommended evacuation routes: [] .Text (0) to go back to the start.,0,1,,24
+14,"""useless state""",0,0,,0
+15,Here is a recommended list of items to make sure you have before leaving: Backpack. Water. Food. Flashlight. Passport. Insurance info etc. Text (9) to go back to the start,0,0,,24
+16,"""change""",1,0,,1
+17,Please enter your zip code.,0,0,,36
+18,"""zipcode""",1,0,,17
+19,"""yes""",1,0,,1
+20,Get Help: Do you need text (1) shelter food water (2) medical help? Text (9) to go back,0,0,,21|22|31
+21,"""shelter""",1,0,,8
+22,"""medical help""",1,0,,23
+23,If emergency call 911. Here are hospitals and medical services near you []. Text (9) to go back,0,1,,24
+24,"""0:back to 0""",1,0,,1
+25,"""process shelter info""",1,0,,26
+26,Which shelter did you choose? Pick corresponding value: (1) (2) or (3) from previous text or (9) to go back,0,0,,27|34|35|24
+27,"""1: first spot""",1,0,,28
+28,Does this shelter have enough resources? Text (1) Yes or (2) if full,0,0,,29
+29,"""full shelter input""",1,0,,30
+30,Thank you for your input! Text (9) to go back.,0,0,,24
+31,"""0:back to 1""",1,0,,1
+32,"""0:back to 4""",1,0,,4
+33,"""0:back to 8""",1,0,,8
+34,"""2: second spot""",1,0,,28
+35,"""3: third spot",1,0,,28
+36,"""changezip""",1,0,,1

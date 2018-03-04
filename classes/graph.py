@@ -41,7 +41,7 @@ class Graph(object):
         edges = self.__graph_dict[vertex]
         return edges
 
-    def __generate_edges(self):
+    def generate_edges(self):
         """ A static method generating the edges of the
             graph "graph". Edges are represented as sets
             with one (a loop back to the vertex) or two
