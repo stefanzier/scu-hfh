@@ -17,7 +17,7 @@ Example: addProvisions("Location Name", "Address", 95053, False)
 Name: addUserInfo(name, zipcode, phoneNum)
 Parameters: string name, int zipcode, string phonenumber OR int phonenumber
 Returns: confirmation of insertion with object id
-Extra Info: phonenumber will be input as a string but will be changed into int
+Extra Info: phonenumber will be input as a string but will be changed into int, only allows one instance of a phone number
 
 Example: adduserInfo("User Name", 95053, "(123) 456-7890")
 Any string input for phonenum will work:

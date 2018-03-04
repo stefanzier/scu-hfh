@@ -48,6 +48,10 @@ def addUserInfo(name, zipcode, phoneNum):
 		phoneNum = phoneNum.replace('+', '').replace('-', "").replace(' ', '').replace('(', '').replace(')', '')
 		phoneNum = int(phoneNum)
 	
+	if userInfo.find({'Phone Number' : phoneNum}).count() > 0:
+		return userInfo.find({'Phone Number' : phoneNum})
+	
+	
 	user_data = { # Create data packet
 		'Name': name,
 		'ZIP': zipcode,
