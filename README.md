@@ -1,4 +1,3 @@
-
 # SMScape
 
 A Flask Application designed to provide a chatbot service for natural disaster victims in the form of both preparational and post-disaster assitance.
@@ -6,6 +5,8 @@ A Flask Application designed to provide a chatbot service for natural disaster v
 This application uses the Twilio API for SMS communication and represents the Chatbot Messaging Workflow as a Directed Graph Data Structure.
 
 ## Graph Data Structure Workflow
+
+### Implementation 
 
 We decided to represent the workflow of our chatbot as a directed graph. A user would begin at Node 0 which would provide the message
 
@@ -25,9 +26,25 @@ Therefore the users state always starts of at a question. Upon receiving a SMS r
 
 This class definition of our graph available here: https://github.com/stefanzier/scu-hfh/blob/master/classes/graph.py.
 
+### Visualization
+
 A visualization of our graph is demonstrated below. It was done in vis.js. 
 
 ![Graph Representation of Chatbot Workflow](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/visualization/graph.png)
+
+### Letting Third Parties Create Unique and Dynamic Graphs
+
+Our application was designed to let third parties, such as the Red Cross or independent hospitals, to upload their own chat bot workflows to our application and present unique functionality to users. We provided a mechanism of letting them upload csv files, in which messages point to the next message in a workflow. The first 7 lines of our csv file for a hurricane workflow is shown below.
+
+        0,This text is from TextToSaveYourLife. A hurricane is coming your way in the next 36 hours. Our system says you currently live in zipcode %. Text (1) if you still live here (2) to update your zipcode,0,3,,16|18
+        1,Now Text (1) Prepare (2) Get Help (3) To Go Back,0,0,,2|3|24
+        2,"""1:prepare""",1,0,,4
+        3,"""2:get help""",1,0,,20
+        4,To Prepare: text for (1) Shelters (2) Evacuation Plans (3) Items you need (4) To Go Back,0,0,,5|6|7|31
+        5,"""1:shelter""",1,0,,8
+        6,"""2:evac plans""",1,0,,13
+        7,"""3:items""",1,0,,15
+
 
 ## Twilio API
 
@@ -36,5 +53,3 @@ The Twilio API was utilized to allow our backend code to process incoming SMS me
 View our implementation of this API at : https://github.com/stefanzier/scu-hfh/blob/master/app.py
 
 ## View the Presentation Slides
-
-
