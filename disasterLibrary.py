@@ -7,13 +7,13 @@ import urllib.request, json
 
 # Insertion
 def addShelter(name, zipcode, address, capacity, services, active):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
 	db = client.DisasterInfo
 	shelters = db.shelters # Collection name inside database
 	
 	shelter_data = { # Creating data packet
 		'Name': name,
-      	'ZIP': zipcode,
+      	'ZIP': int(zipcode),
 		'Address': address,
 		'Capacity': capacity,
       	'Services': services,
@@ -25,13 +25,13 @@ def addShelter(name, zipcode, address, capacity, services, active):
 
 # name zip addy
 def addProvisions(name, zipcode, address, active):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
 	db = client.DisasterInfo
 	provisions = db.provisions # Collection name inside database
 
 	provision_data = { # Creating data packet
 		'Name': name,
-		'ZIP': zipcode,
+		'ZIP': int(zipcode),
 		'Address': address,
 		'Visitors' : 0,
 		'Active': active
@@ -40,7 +40,7 @@ def addProvisions(name, zipcode, address, active):
 	return ('Posted: {0}'.format(result.inserted_id))
 
 def addUserInfo(name, zipcode, phoneNum):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
 	db = client.DisasterInfo
 	userInfo = db.userInfo
 	
@@ -54,14 +54,14 @@ def addUserInfo(name, zipcode, phoneNum):
 	
 	user_data = { # Create data packet
 		'Name': name,
-		'ZIP': zipcode,
+		'ZIP': int(zipcode),
       	'Phone Number': phoneNum
 	}
 	result = userInfo.insert_one(user_data)
 	return ('Post ID: {0}'.format(result.inserted_id))
 
 def addImportantItems(disaster, items):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
 	db = client.DisasterInfo
 	importantItems = db.importantItems
 
@@ -77,7 +77,7 @@ def addImportantItems(disaster, items):
 
 # change graph
 def getShelters(zipcode, nearby):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
 	db = client.DisasterInfo
 	shelters = db.shelters # Collection name inside database
 	shelter_posts = shelters.find({'ZIP' : zipcode, 'Active' : True})
@@ -91,7 +91,7 @@ def getShelters(zipcode, nearby):
 	return shelter_posts
 
 def getProvisions(zipcode, nearby):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
 	db = client.DisasterInfo
 	provisions = db.provisions # Collection name inside database
 
@@ -105,7 +105,7 @@ def getProvisions(zipcode, nearby):
 	return provisions_posts
 
 def getUserInfo(phoneNum):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
 	db = client.DisasterInfo
 	userInfo = db.userInfo # Collection name inside database
 
@@ -132,37 +132,37 @@ def nearbyZipcodes(zipcode):
 # UPDATING
 
 def incrShelterVisitors(name):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
 	db = client.DisasterInfo
 	shelters = db.shelters
 	shelters.update_one({'Name' : name}, {'$inc': {'Visitors' : 1}}, upsert=False)
 
 def clearShelterVisitors(name):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
 	db = client.DisasterInfo
 	shelters = db.shelters
 	shelters.update_one({'Name' : name}, {'$set': {'Visitors' : 0}}, upsert=False)
 	
 def renameShelter(name, newName):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
 	db = client.DisasterInfo
 	shelters = db.shelters
 	shelters.update_one({'Name' : name}, {'$set': {'Name': newName}}, upsert=False)
 	
 def renameProvisions(name, newName):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
 	db = client.DisasterInfo
 	provisions = db.provisions
 	provisions.update_one({'Name' : name}, {'$set': {'Name': newName}}, upsert=False)
 
 def updateShelterActive(name, active):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
 	db = client.DisasterInfo
 	shelters = db.shelters
 	shelters.update_one({'Name' : name}, {'$set': {'Active': active}}, upsert=False)
     
 def updateProvisionsActive(name, active):
-	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin")
+	client = MongoClient("mongodb://scuhfh:gobroncos@disasterinfo-shard-00-00-vhxix.mongodb.net:27017,disasterinfo-shard-00-01-vhxix.mongodb.net:27017,disasterinfo-shard-00-02-vhxix.mongodb.net:27017/test?ssl=true&replicaSet=DisasterInfo-shard-0&authSource=admin", ssl=True)
 	db = client.DisasterInfo
 	provisions = db.provisions
 	provisions.update_one({'Name' : name}, {'$set': {'Active': active}}, upsert=False)
