@@ -54,14 +54,13 @@ View our implementation of this API at : https://github.com/stefanzier/scu-hfh/b
 
 ## View the Presentation Slides
 
-![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide01.png.png)
-![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide02.png.png)
-![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide03.png.png)
-![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide04.png.png)
-![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide05.png.png)
-![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide06.png.png)
-![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide07.png.png)
-![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide08.png.png)
-![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide09.png.png)
-![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide10.png.png)
-
+![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide01.png)
+![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide02.png)
+![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide03.png)
+![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide04.png)
+![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide05.png)
+![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide06.png)
+![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide07.png)
+![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide08.png)
+![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide09.png)
+![slide1](https://raw.githubusercontent.com/stefanzier/scu-hfh/master/slides/Slide10.png)
